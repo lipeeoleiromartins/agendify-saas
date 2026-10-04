@@ -1,31 +1,115 @@
-<!DOCTYPE html>
-<html lang="pt">
-<head>
-    <meta charset="UTF-8">
-    <title>Login - Agendify</title>
-</head>
-<body>
-    <h2>Iniciar Sessão no Agendify</h2>
-    
-    <!-- Mensagens Flash -->
-    {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            {% for category, message in messages %}
-                <div style="color: {% if category == 'danger' %}red{% else %}green{% endif %}; margin-bottom: 10px;">{{ message }}</div>
-            {% endfor %}
-        {% endif %}
+{% extends "base.html" %}
+{% block title %}Iniciar Sessão - Agendify{% endblock %}
+
+{% block content %}
+<style>
+  /* Estilos específicos com tema Barbearia Premium para a página de Login */
+  body {
+    background: linear-gradient(135deg, #121212 0%, #1e1e1e 100%) !important;
+    color: #f8f9fa !important;
+  }
+
+  .login-container {
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .barber-card {
+    background: #1a1a1a;
+    border: 1px solid #333333 !important;
+    border-radius: 16px !important;
+    padding: 24px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  }
+
+  .barber-title {
+    color: #d4af37; /* Dourado clássico de barbearia */
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .form-control {
+    background-color: #262626 !important;
+    border: 1px solid #404040 !important;
+    color: #ffffff !important;
+    border-radius: 10px !important;
+    padding: 12px;
+  }
+
+  .form-control:focus {
+    border-color: #d4af37 !important;
+    box-shadow: 0 0 0 0.2rem rgba(212, 175, 55, 0.25) !important;
+  }
+
+  label {
+    color: #b0b0b0;
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+  }
+
+  .btn-barber {
+    background: linear-gradient(135deg, #d4af37 0%, #aa8c2c 100%);
+    color: #121212;
+    font-weight: 700;
+    border: none;
+    border-radius: 10px;
+    padding: 12px;
+    width: 100%;
+    transition: transform 0.1s ease, opacity 0.2s;
+  }
+
+  .btn-barber:active {
+    transform: scale(0.98);
+    opacity: 0.9;
+  }
+
+  .register-link {
+    color: #d4af37;
+    text-decoration: none;
+  }
+
+  .register-link:hover {
+    text-decoration: underline;
+    color: #e5c158;
+  }
+</style>
+
+<div class="container login-container">
+  <div class="barber-card">
+    <h2 class="barber-title">✂️ AGENDIFY</h2>
+    <p class="text-center text-muted mb-4" style="font-size: 0.95rem;">Painel Exclusivo de Barbearia</p>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="alert alert-dark border-secondary text-light text-center" role="alert" style="border-radius: 10px;">
+          {{ messages[0] }}
+        </div>
+      {% endif %}
     {% endwith %}
-        
+
     <form method="POST">
-        <label>Email:</label><br>
-        <input type="email" name="email" required><br><br>
-        
-        <label>Palavra-passe:</label><br>
-        <input type="password" name="senha" required><br><br>
-        
-        <button type="submit">Entrar</button>
+      <div class="mb-3">
+        <label for="email">E-mail</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="exemplo@barbearia.com" required>
+      </div>
+
+      <div class="mb-4">
+        <label for="password">Palavra-passe</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="••••••••" required>
+      </div>
+
+      <button type="submit" class="btn btn-barber mb-3">Entrar no Sistema</button>
     </form>
-    
-    <p>Ainda não tens conta? <a href="{{ url_for('auth.register') }}">Registar-te</a></p>
-</body>
-</html>
+
+    <div class="text-center mt-3" style="font-size: 0.9rem;">
+      <span class="text-muted">Ainda não tens conta?</span> 
+      <a href="{{ url_for('auth.register') }}" class="register-link fw-bold">Registar-te</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

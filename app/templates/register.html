@@ -1,34 +1,41 @@
-<!DOCTYPE html>
-<html lang="pt">
-<head>
-    <meta charset="UTF-8">
-    <title>Registo - Agendify</title>
-</head>
-<body>
-    <h2>Criar Conta no Agendify</h2>
-    
-    <!-- Mensagens Flash -->
-    {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            {% for category, message in messages %}
-                <div style="color: red; margin-bottom: 10px;">{{ message }}</div>
-            {% endfor %}
-        {% endif %}
-    {% endwith %}
-        
-    <form method="POST">
-        <label>Nome:</label><br>
-        <input type="text" name="nome" required><br><br>
-        
-        <label>Email:</label><br>
-        <input type="email" name="email" required><br><br>
-        
-        <label>Palavra-passe:</label><br>
-        <input type="password" name="senha" required><br><br>
-        
-        <button type="submit">Registar</button>
-    </form>
-    
-    <p>Já tens conta? <a href="{{ url_for('auth.login') }}">Fazer Login</a></p>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Registo - Agendify{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+        <div class="text-center mb-4">
+            <h2 class="fw-bold">Criar Conta no Agendify</h2>
+            <p class="text-muted">Painel Exclusivo de Barbearia</p>
+        </div>
+
+        <div class="card p-4 shadow-lg border-secondary bg-dark">
+            <form method="POST">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nome:</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">E-mail:</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">Palavra-passe:</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+
+                <div class="d-grid mt-4">
+                    <button type="submit" class="btn btn-warning fw-bold py-2">Registar</button>
+                </div>
+            </form>
+
+            <div class="text-center mt-3">
+                <p class="mb-0 text-muted">Já tens conta? <a href="{{ url_for('auth.login') }}" class="text-warning text-decoration-none">Fazer Login</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

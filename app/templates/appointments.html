@@ -14,19 +14,19 @@
 <div class="card shadow-sm">
     <div class="card-body p-0">
         <div class="table-responsive">
-            <table class="table table-hover mb-0 align-middle">
+            <table class="table table-hover mb-0 align-middle w-100">
                 <thead class="table-dark">
                     <tr>
                         <th>Data e Hora</th>
                         <th>Cliente</th>
                         <th>Serviço</th>
                         <th>Estado</th>
-                        <th class="text-center">Ações</th>
+                        <th class="text-center" style="min-width: 240px;">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% if agendamentos %}
-                        {% for ag in agendamentos %}
+                    {% if appointments %}
+                        {% for ag in appointments %}
                         <tr>
                             <td>{{ ag.data_hora.strftime('%d/%m/%Y %H:%M') }}</td>
                             <td class="fw-semibold">{{ ag.cliente.nome }}</td>
@@ -40,14 +40,16 @@
                                     <span class="badge bg-warning text-dark">Agendado</span>
                                 {% endif %}
                             </td>
-                            <td class="text-center">
+                            <td class="text-center" style="min-width: 240px;">
                                 {% if ag.status == 'Agendado' %}
-                                    <form action="{{ url_for('appointments.update_status', id=ag.id, novo_status='Concluído') }}" method="POST" style="display:inline;">
-                                        <button type="submit" class="btn btn-sm btn-outline-success me-1">Concluir</button>
-                                    </form>
-                                    <form action="{{ url_for('appointments.update_status', id=ag.id, novo_status='Cancelado') }}" method="POST" style="display:inline;">
-                                        <button type="submit" class="btn btn-sm btn-outline-danger">Cancelar</button>
-                                    </form>
+                                    <div class="d-inline-flex align-items-center gap-2">
+                                        <form action="{{ url_for('appointments.update_status', id=ag.id, novo_status='Concluído') }}" method="POST" class="d-inline m-0 p-0 bg-transparent border-0">
+                                            <button type="submit" class="btn btn-sm btn-outline-success px-2 py-1">Concluir</button>
+                                        </form>
+                                        <form action="{{ url_for('appointments.update_status', id=ag.id, novo_status='Cancelado') }}" method="POST" class="d-inline m-0 p-0 bg-transparent border-0">
+                                            <button type="submit" class="btn btn-sm btn-outline-danger px-2 py-1">Cancelar</button>
+                                        </form>
+                                    </div>
                                 {% else %}
                                     <span class="text-muted small">Sem ações</span>
                                 {% endif %}
