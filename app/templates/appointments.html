@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block title %}Meus Agendamentos - Agendify{% endblock %}
+
+{% block content %}
+<div class="row mb-3 align-items-center">
+    <div class="col">
+        <h2 class="fw-bold text-dark">Meus Agendamentos</h2>
+    </div>
+    <div class="col text-end">
+        <a href="{{ url_for('appointments.add_appointment') }}" class="btn btn-primary">+ Novo Agendamento</a>
+    </div>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover mb-0 align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Data e Hora</th>
+                        <th>Cliente</th>
+                        <th>Serviço</th>
+                        <th>Estado</th>
+                        <th class="text-center">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if agendamentos %}
+                        {% for ag in agendamentos %}
+                        <tr>
+                            <td>{{ ag.data_hora.strftime('%d/%m/%Y %H:%M') }}</td>
+                            <td class="fw-semibold">{{ ag.cliente.nome }}</td>
+                            <td>{{ ag.servico.nome }} <span class="text-muted">({{ ag.servico.preco }}€)</span></td>
+                            <td>
+                                {% if ag.status == 'Concluído' %}
+                                    <span class="badge bg-success">Concluído</span>
+                                {% elif ag.status == 'Cancelado' %}
+                                    <span class="badge bg-danger">Cancelado</span>
+                                {% else %}
+                                    <span class="badge bg-warning text-dark">Agendado</span>
+                                {% endif %}
+                            </td>
+                            <td class="text-center">
+                                {% if ag.status == 'Agendado' %}
+                                    <form action="{{ url_for('appointments.update_status', id=ag.id, novo_status='Concluído') }}" method="POST" style="display:inline;">
+                                        <button type="submit" class="btn btn-sm btn-outline-success me-1">Concluir</button>
+                                    </form>
+                                    <form action="{{ url_for('appointments.update_status', id=ag.id, novo_status='Cancelado') }}" method="POST" style="display:inline;">
+                                        <button type="submit" class="btn btn-sm btn-outline-danger">Cancelar</button>
+                                    </form>
+                                {% else %}
+                                    <span class="text-muted small">Sem ações</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="5" class="text-center py-4 text-muted">Ainda não tens agendamentos registados.</td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="mt-3">
+    <a href="{{ url_for('auth.dashboard') }}" class="text-decoration-none">← Voltar ao Dashboard</a>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Adicionar Cliente - Agendify</title>
+</head>
+<body>
+    <h2>Adicionar Novo Cliente</h2>
+    
+    <form method="POST">
+        <label>Nome:</label><br>
+        <input type="text" name="nome" required><br><br>
+        
+        <label>Telefone:</label><br>
+        <input type="text" name="telefone"><br><br>
+        
+        <label>Email:</label><br>
+        <input type="email" name="email"><br><br>
+        
+        <button type="submit">Guardar Cliente</button>
+    </form>
+    
+    <br>
+    <p><a href="{{ url_for('clients.list_clients') }}">Cancelar</a></p>
+</body>
+</html>

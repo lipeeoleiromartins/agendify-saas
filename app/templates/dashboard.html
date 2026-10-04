@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Dashboard - Agendify{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col">
+        <h1 class="fw-bold">Painel de Controlo</h1>
+        <p class="text-muted">Bem-vindo de volta ao teu sistema de agendamentos.</p>
+    </div>
+</div>
+
+<div class="row g-4">
+    <!-- Card de Clientes -->
+    <div class="col-md-4">
+        <div class="card shadow-sm h-100 border-0">
+            <div class="card-body text-center p-4">
+                <div class="display-4 mb-3">👥</div>
+                <h3 class="card-title h5 fw-bold">Clientes</h3>
+                <p class="card-text text-muted">Gerencia a tua base de clientes de forma simples.</p>
+                <a href="{{ url_for('clients.list_clients') }}" class="btn btn-outline-primary w-100 mt-2">Ver Clientes</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card de Serviços -->
+    <div class="col-md-4">
+        <div class="card shadow-sm h-100 border-0">
+            <div class="card-body text-center p-4">
+                <div class="display-4 mb-3">🛠️</div>
+                <h3 class="card-title h5 fw-bold">Serviços</h3>
+                <p class="card-text text-muted">Configura os serviços oferecidos e respetivas durações.</p>
+                <a href="{{ url_for('services.list_services') }}" class="btn btn-outline-primary w-100 mt-2">Ver Serviços</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card de Agendamentos -->
+    <div class="col-md-4">
+        <div class="card shadow-sm h-100 border-0">
+            <div class="card-body text-center p-4">
+                <div class="display-4 mb-3">📅</div>
+                <h3 class="card-title h5 fw-bold">Agendamentos</h3>
+                <p class="card-text text-muted">Controla a tua agenda e estados de marcação.</p>
+                <a href="{{ url_for('appointments.list_appointments') }}" class="btn btn-outline-primary w-100 mt-2">Ver Agenda</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
