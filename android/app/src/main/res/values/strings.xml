@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Agendify</string>
+    <string name="title_activity_main">Agendify</string>
+    <string name="package_name">com.filipe.agendify</string>
+    <string name="custom_url_scheme">com.filipe.agendify</string>
+</resources>
