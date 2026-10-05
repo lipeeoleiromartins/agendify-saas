@@ -19,10 +19,10 @@ O projeto foi construído utilizando uma stack moderna e robusta:
 
 ## ✨ Funcionalidades Principais
 
-* **Painel de Controlo (Dashboard):** Visão geral e acesso rápido aos módulos principais do negócio[cite: 6].
-* **Gestão de Clientes:** Registo, consulta e histórico de clientes de forma simples e intuitiva[cite: 6].
-* **Gestão de Serviços:** Configuração de serviços oferecidos, preços e respetivas durações[cite: 6].
-* **Módulo de Agendamentos:** Controlo de agenda, marcações e estados de atendimento em tempo real[cite: 6].
+* **Painel de Controlo (Dashboard):** Visão geral e acesso rápido aos módulos principais do negócio.
+* **Gestão de Clientes:** Registo, consulta e histórico de clientes de forma simples e intuitiva.
+* **Gestão de Serviços:** Configuração de serviços oferecidos, preços e respetivas durações.
+* **Módulo de Agendamentos:** Controlo de agenda, marcações e estados de atendimento em tempo real.
 * **Autenticação Segura:** Sistema de login e registo protegido para utilizadores e administradores.
 
 ---
