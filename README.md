@@ -27,11 +27,6 @@ O projeto foi construído utilizando uma stack moderna e robusta:
 
 ---
 
-## 📸 Pré-visualização do Sistema
-
-*(Podes adicionar aqui capturas de ecrã da página de login, dashboard e gestão de agendamentos para ilustrar o projeto!)*
-
----
 
 ## ⚙️ Como Executar o Projeto Localmente
 
