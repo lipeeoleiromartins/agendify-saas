@@ -39,5 +39,4 @@ Se quiseres clonar e executar o Agendify no teu computador de desenvolvimento:
 
 1. **Clona o repositório:**
    ```bash
-   git clone [https://github.com/lipeeoleiromartins/agendify-saas.git](https://github.com/lipeeoleiromartins/agendify-saas.git)
-   cd agendify-saas
+   git clone https://github.com/lipeeoleiromartins/agendify-saas.git
